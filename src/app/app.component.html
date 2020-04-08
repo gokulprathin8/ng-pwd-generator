@@ -1,33 +1,54 @@
-<h1>Password Generator</h1>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Password Generator</h1>
 
-<div>
-  <label>Enter Length</label>
-  <input (input)="onChangeLengthPressed($event.target.value)" type="number">
-</div>
+      <div class="field">
+        <label>Length</label>
+        <input class="input" (input)="onChangeLengthPressed($event.target.value)" type="number">
+        <!-- <input class="input" (input)="onChangeLength($event.target.value)" /> -->
+      </div>
 
-  <br>
-  <br>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseLettersPressed()" type="checkbox">
+            <!-- <input (change)="onChangeUseLetters()" type="checkbox" /> -->
+            Use Letters
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label>Use Letters</label>
-  <input (change)="onChangeUseLettersPressed()" type="checkbox">
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseNumbersPressed()" type="checkbox">
+            <!-- <input (change)="onChangeUseNumbers()" type="checkbox" /> -->
+            Use Numbers
+          </label>
+        </div>
+      </div>
 
-<div>
-  <label>Use Numbers</label>
-  <input (change)="onChangeUseNumbersPressed()" type="checkbox">
-</div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input (change)="onChangeUseSymbolsPressed()" type="checkbox"> 
+            <!-- <input (change)="onChangeUseSymbols()" type="checkbox" /> -->
+            Use Symbols
+          </label>
+        </div>
+      </div>
+      <button class="button is-link is-fullwidth" [disabled]="!(onChangeLength && (onChangeUseLetters || onChangeUseNumbers || onChangeUseSymbols))" (click)="onButtonClick()">Generate</button>
+      <!-- <button [disabled]="
+          !(length && (includeLetters || includeSymbols || includeNumbers))
+        " (click)="onButtonClick()" class="button is-link is-fullwidth">
+        Generate!
+      </button> -->
 
-<div>
-  <label>Use Symbols</label>
-  <input (change)="onChangeUseSymbolsPressed()" type="checkbox"> 
-</div>
-
-<div>
-  <button [disabled]="!(onChangeLength && (onChangeUseLetters || onChangeUseNumbers || onChangeUseSymbols))" (click)="onButtonClick()">Generate</button>
-</div>
-
-<div>
-  <label>Your Password</label>
-  <input type="text" [value]="password">
+      <div class="box">
+        <label>Your Password</label>
+        <input class="input" type="text" [value]="password">
+      </div>
+    </div>
+  </div>
 </div>
